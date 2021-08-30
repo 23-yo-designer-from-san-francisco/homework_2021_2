@@ -39,9 +39,7 @@ QUnit.module('Тестируем функцию anagram', function () {
 			'тут', 'нет', 'анаграмм'
 		];
 
-		const output = [
-			
-		];
+		const output = [];
 
 		assert.deepEqual(anagram(input), output);
 	});

@@ -2,32 +2,31 @@
 
 /**
  * Function that finds anagrams in a given array and returns an array of arrays of anagrams
- * @parram {Array} input - Array of strings
+ * @parram  {Array} input - Array of strings
  * @returns {Array} Array of anagrams in alphanumerical order
- * @type {Object.<string, number>}
+ * @type    {Object.<string, number>}
  */
 function anagram(input) {
-    const buckets = {};
-    input.forEach((e, i) => {
-        const key = e.toLowerCase().split('').sort().join('');
-        if (!buckets[key]){
-            buckets[key] = [i];
+    const map = input.reduce((map, str, index) => {
+        const key = str.toLowerCase().split('').sort().join('');
+        if (!map[key]) {
+            map[key] = [index];
         } else {
-            buckets[key].push(i);
+            map[key].push(index);
         }
-    });
+        return map;
+    }, {});
 
-    const result = [];
-
-    for (const [key, value] of Object.entries(buckets)) {
-        if (value['length'] > 1) {
-            const temp = [];
-            value.forEach((index) => {
-                temp.push(input[index]);
-            })
-            result.push(temp.sort((elem1, elem2) =>  elem1 < elem2 ? -1 : 1));
+    const result = Object.entries(map).reduce((result, elem, index) => {
+        if (elem[1]['length'] > 1) {
+            const temp = elem[1].reduce((arr, ind) => {
+                arr.push(input[ind]);
+                return arr.sort((elem1, elem2) => elem1 < elem2 ? -1 : 1);
+            }, []);
+            result.push(temp);
         }
-    }
+        return result;
+    }, [])
 
     return result.sort((elem1, elem2) => elem1[0] < elem2[0] ? -1 : 1);
 }
