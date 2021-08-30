@@ -45,4 +45,28 @@ QUnit.module('Тестируем функцию anagram', function () {
 
 		assert.deepEqual(anagram(input), output);
 	});
+
+	QUnit.test('Функция работает правильно [4]', function (assert) {
+		const input = [
+			'ПИла', 'ПИЛА', 'ЛИПа'
+		];
+
+		const output = [
+			['ЛИПа', 'ПИЛА', 'ПИла']
+		];
+
+		assert.deepEqual(anagram(input), output);
+	});
+
+		QUnit.test('Почему бы и нет', function (assert) {
+		const input = [
+			'123', '321', '456'
+		];
+
+		const output = [
+			['123', '321']
+		];
+
+		assert.deepEqual(anagram(input), output);
+	});
 });
