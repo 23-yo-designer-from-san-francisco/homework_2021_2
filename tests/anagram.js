@@ -69,17 +69,17 @@ QUnit.module('Тестируем функцию anagram', function () {
 
 	QUnit.test('Принимает на вход только массив', function (assert) {
 		assert.throws(
-			() => { anagram("string") },
+			() => { anagram("string"); },
 			new Error('Input is not an array'),
 			'error thrown for string'
 		);
 		assert.throws(
-			() => { anagram(12) },
+			() => { anagram(12); },
 			new Error('Input is not an array'),
 			'error thrown for int'
 		);
 		assert.throws(
-			() => { anagram(true) },
+			() => { anagram(true); },
 			new Error('Input is not an array'),
 			'error thrown for bool'
 		);
