@@ -7,7 +7,7 @@
  * @type    {Object.<string, number>}
  */
 function anagram(input) {
-    const map = input.sort().reduce((map, str, index) => {
+    const map = input.sort().reduce((map, str) => {
         const key = str.toLowerCase().split('').sort().join('');
         if (!map[key]) {
             map[key] = [str];
@@ -17,9 +17,9 @@ function anagram(input) {
         return map;
     }, {});
     
-    return Object.keys(map).reduce((acc, key) => {
-        if (map[key].length > 1) {
-            acc.push(map[key])    
+    return Object.values(map).reduce((acc, value) => {
+        if (value.length > 1) {
+            acc.push(value)    
         }
         return acc;
     }, []);
