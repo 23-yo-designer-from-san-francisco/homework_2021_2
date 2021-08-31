@@ -17,15 +17,15 @@ function anagram(input) {
         return map;
     }, {});
 
-    const result = Object.entries(map).reduce((result, elem, index) => {
+    const result = Object.entries(map).reduce((acc, elem, index) => {
         if (elem[1]['length'] > 1) {
             const temp = elem[1].reduce((acc, elem) => {
                 acc.push(input[elem]);
                 return acc.sort((elem1, elem2) => elem1 < elem2 ? -1 : 1);
             }, []);
-            result.push(temp);
+            acc.push(temp);
         }
-        return result;
+        return acc;
     }, [])
 
     return result.sort((elem1, elem2) => elem1[0] < elem2[0] ? -1 : 1);
