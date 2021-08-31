@@ -7,27 +7,20 @@
  * @type    {Object.<string, number>}
  */
 function anagram(input) {
-    const map = input.sort((elem1, elem2) => elem1 < elem2 ? -1 : 1).reduce((map, str, index) => {
+    const map = input.sort().reduce((map, str, index) => {
         const key = str.toLowerCase().split('').sort().join('');
         if (!map[key]) {
-            map[key] = [index];
+            map[key] = [str];
         } else {
-            map[key].push(index);
+            map[key].push(str);
         }
         return map;
     }, {});
-
-    return Object.entries(map).reduce((acc, elem, index) => {
-        if (elem[1]['length'] > 1) {
-            const temp = elem[1].reduce((acc, elem) => {
-                acc.push(input[elem]);
-                return acc;
-            }, []);
-
-            acc.push(temp);
-            return acc;
+    
+    return Object.keys(map).reduce((acc, key) => {
+        if (map[key].length > 1) {
+            acc.push(map[key])    
         }
-        acc.push()
         return acc;
     }, []);
 }

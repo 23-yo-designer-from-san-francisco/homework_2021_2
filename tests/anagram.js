@@ -1,7 +1,7 @@
 'use strict';
 
 QUnit.module('Тестируем функцию anagram', function () {
-	QUnit.test('Функция работает правильно [1]', function (assert) {
+	QUnit.test('Функция работает правильно с нормальными данными', function (assert) {
 		const input = [
 			'кот', 'пила', 'барокко',
 			'стоп', 'ток', 'кошка',
@@ -18,7 +18,7 @@ QUnit.module('Тестируем функцию anagram', function () {
 		assert.deepEqual(anagram(input), output);
 	});
 
-	QUnit.test('Функция работает правильно [2]', function (assert) {
+	QUnit.test('Функция работает правильно с нормальными данными', function (assert) {
 		const input = [
 			'соратница', 'травинка', 'пантокрин',
 			'стационар', 'антиквар', 'патронник',
@@ -34,7 +34,7 @@ QUnit.module('Тестируем функцию anagram', function () {
 		assert.deepEqual(anagram(input), output);
 	});
 
-	QUnit.test('Функция работает правильно [3]', function (assert) {
+	QUnit.test('Функция работает правильно с данными без анаграмм', function (assert) {
 		const input = [
 			'тут', 'нет', 'анаграмм'
 		];
@@ -44,7 +44,7 @@ QUnit.module('Тестируем функцию anagram', function () {
 		assert.deepEqual(anagram(input), output);
 	});
 
-	QUnit.test('Функция работает правильно [4]', function (assert) {
+	QUnit.test('Функция работает правильно с различным регистром символов', function (assert) {
 		const input = [
 			'ПИла', 'ПИЛА', 'ЛИПа'
 		];
