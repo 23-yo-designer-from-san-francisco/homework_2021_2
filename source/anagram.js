@@ -7,6 +7,9 @@
  * @type    {Object.<string, number>}
  */
 function anagram(input) {
+    if (!Array.isArray(input)) {
+        throw 'Input is not an array';
+    }
     const map = input.sort().reduce((map, str) => {
         const key = str.toLowerCase().split('').sort().join('');
         if (!map[key]) {

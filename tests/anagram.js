@@ -56,7 +56,7 @@ QUnit.module('Тестируем функцию anagram', function () {
 		assert.deepEqual(anagram(input), output);
 	});
 
-		QUnit.test('Почему бы и нет', function (assert) {
+	QUnit.test('Почему бы и нет', function (assert) {
 		const input = [
 			'123', '321', '456'
 		];
@@ -66,5 +66,23 @@ QUnit.module('Тестируем функцию anagram', function () {
 		];
 
 		assert.deepEqual(anagram(input), output);
+	});
+
+	QUnit.test('Принимает на вход только массив', function (assert) {
+		assert.throws(
+			() => { anagram("string") },
+			(err) => { return err.toString() === 'Input is not an array'},
+			'error thrown for string'
+		);
+		assert.throws(
+			() => { anagram(12) },
+			(err) => { return err.toString() === 'Input is not an array'},
+			'error thrown for int'
+		);
+		assert.throws(
+			() => { anagram(true) },
+			(err) => { return err.toString() === 'Input is not an array'},
+			'error thrown for bool'
+		);
 	});
 });
