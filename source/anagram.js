@@ -19,9 +19,9 @@ function anagram(input) {
 
     const result = Object.entries(map).reduce((result, elem, index) => {
         if (elem[1]['length'] > 1) {
-            const temp = elem[1].reduce((arr, ind) => {
-                arr.push(input[ind]);
-                return arr.sort((elem1, elem2) => elem1 < elem2 ? -1 : 1);
+            const temp = elem[1].reduce((acc, elem) => {
+                acc.push(input[elem]);
+                return acc.sort((elem1, elem2) => elem1 < elem2 ? -1 : 1);
             }, []);
             result.push(temp);
         }
