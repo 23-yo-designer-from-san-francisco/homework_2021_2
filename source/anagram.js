@@ -8,7 +8,7 @@
  */
 function anagram(input) {
     if (!Array.isArray(input)) {
-        throw 'Input is not an array';
+        throw Error('Input is not an array');
     }
     const map = input.sort().reduce((map, str) => {
         const key = str.toLowerCase().split('').sort().join('');
@@ -22,7 +22,7 @@ function anagram(input) {
     
     return Object.values(map).reduce((acc, value) => {
         if (value.length > 1) {
-            acc.push(value)    
+            acc.push(value);
         }
         return acc;
     }, []);

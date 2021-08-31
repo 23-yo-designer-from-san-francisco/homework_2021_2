@@ -64,24 +64,23 @@ QUnit.module('Тестируем функцию anagram', function () {
 		const output = [
 			['123', '321']
 		];
-
 		assert.deepEqual(anagram(input), output);
 	});
 
 	QUnit.test('Принимает на вход только массив', function (assert) {
 		assert.throws(
 			() => { anagram("string") },
-			(err) => { return err.toString() === 'Input is not an array'},
+			new Error('Input is not an array'),
 			'error thrown for string'
 		);
 		assert.throws(
 			() => { anagram(12) },
-			(err) => { return err.toString() === 'Input is not an array'},
+			new Error('Input is not an array'),
 			'error thrown for int'
 		);
 		assert.throws(
 			() => { anagram(true) },
-			(err) => { return err.toString() === 'Input is not an array'},
+			new Error('Input is not an array'),
 			'error thrown for bool'
 		);
 	});
