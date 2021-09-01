@@ -6,24 +6,25 @@
  * @returns {Array} Array of anagrams in alphanumerical order
  * @type    {Object.<string, number>}
  */
-function anagram(input) {
+const anagram = (input) => {
     if (!Array.isArray(input)) {
         throw new Error('Input is not an array');
     }
-    const map = input.sort().reduce((map, str) => {
-        const key = str.toLowerCase().split('').sort().join('');
-        if (!map[key]) {
-            map[key] = [str];
+
+    const map = [...input].sort().reduce((map, word) => {
+        const sortedLetters = word.toLowerCase().split('').sort().join('');
+        if (!map[sortedLetters]) {
+            map[sortedLetters] = [word];
         } else {
-            map[key].push(str);
+            map[sortedLetters].push(word);
         }
         return map;
     }, {});
     
-    return Object.values(map).reduce((acc, value) => {
-        if (value.length > 1) {
-            acc.push(value);
+    return Object.values(map).reduce((resultArray, anagramGroup) => {
+        if (anagramGroup.length > 1) {
+            resultArray.push(anagramGroup);
         }
-        return acc;
+        return resultArray;
     }, []);
 }
