@@ -2,9 +2,8 @@
 
 /**
  * Function that finds anagrams in a given array and returns an array of arrays of anagrams
- * @parram  {Array} input - Array of strings
- * @returns {Array} Array of anagrams in alphanumerical order
- * @type    {Object.<string, number>}
+ * @param   {string[]} input - Array of strings
+ * @returns {string[]} Array of anagrams in alphanumerical order
  */
 const anagram = (input) => {
     if (!Array.isArray(input)) {
